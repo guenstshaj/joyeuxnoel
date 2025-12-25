@@ -712,6 +712,41 @@
         opacity: 1;
       }
 
+      .create-your-own {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px dashed #ddd;
+        text-align: center;
+      }
+
+      .create-your-own p {
+        margin-bottom: 15px;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .btn-create-wish {
+        display: inline-block;
+        background: linear-gradient(to right, #26a17b, #1a8c3a);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(38, 161, 123, 0.3);
+      }
+
+      .btn-create-wish:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(38, 161, 123, 0.4);
+        background: linear-gradient(to right, #1a8c3a, #26a17b);
+      }
+
+      .btn-create-wish i {
+        margin-right: 8px;
+      }
+
       @media (max-width: 768px) {
         .main-content {
           flex-direction: column;
@@ -1018,6 +1053,37 @@ Je vous souhaite un Joyeux Noël rempli de joie, de bonheur et de moments chaleu
               </a>
               <a href="#" class="share-btn email" id="emailShare">
                 <i class="fas fa-envelope"></i> Email
+              </a>
+            </div>
+            <!-- À AJOUTER dans la section de partage, après les boutons de partage existants -->
+            <div
+              class="create-your-own"
+              style="
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px dashed #ddd;
+              "
+            >
+              <p style="margin-bottom: 15px; color: #666; font-size: 0.95rem">
+                Vous aussi, créez vos propres voeux de Noël personnalisés !
+              </p>
+              <a
+                href="./"
+                class="btn-create-wish"
+                style="
+                  display: inline-block;
+                  background: linear-gradient(to right, #26a17b, #1a8c3a);
+                  color: white;
+                  padding: 12px 25px;
+                  border-radius: 50px;
+                  text-decoration: none;
+                  font-weight: 600;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 5px 15px rgba(38, 161, 123, 0.3);
+                "
+              >
+                <i class="fas fa-tree" style="margin-right: 8px"></i> Créer mes
+                propres voeux
               </a>
             </div>
           </div>
