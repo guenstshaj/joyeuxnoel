@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joyeux Noël - Partagez vos voeux festifs</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-red: #c23a3a;
+        --primary-green: #2a7a3a;
+        --gold: #d4af37;
+        --light-gold: #f5e8aa;
+        --snow-white: #f8f9fa;
+        --dark-green: #1a5c28;
+        --shadow: rgba(0, 0, 0, 0.15);
+        --crypto-blue: #26a17b;
+        --crypto-dark: #1a6b50;
+        --usdt-green: #26a17b;
+        --btc-orange: #f7931a;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #0f2f1f;
+        background-image: radial-gradient(white 1px, transparent 1px),
+          radial-gradient(white 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+        color: #333;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50,5 L60,40 L95,40 L65,60 L75,95 L50,75 L25,95 L35,60 L5,40 L40,40 Z" fill="%23d4af37" opacity="0.1"/></svg>')
+          repeat;
+        z-index: -1;
+        opacity: 0.3;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 30px 0 20px;
+        position: relative;
+      }
+
+      .logo {
+        font-family: "Mountains of Christmas", cursive;
+        font-size: 3.5rem;
+        color: var(--primary-red);
+        text-shadow: 3px 3px 0 var(--primary-green),
+          5px 5px 5px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .logo::after {
+        content: "🎄";
+        position: absolute;
+        right: -40px;
+        top: 5px;
+        font-size: 2.5rem;
+      }
+
+      .logo::before {
+        content: "🎅";
+        position: absolute;
+        left: -40px;
+        top: 5px;
+        font-size: 2.5rem;
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: var(--snow-white);
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(42, 122, 58, 0.7);
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px var(--shadow);
+      }
+
+      .support-banner {
+        background: linear-gradient(
+          135deg,
+          var(--crypto-dark),
+          var(--crypto-blue)
+        );
+        color: white;
+        padding: 15px 25px;
+        border-radius: 15px;
+        margin: 20px auto 30px;
+        max-width: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+        box-shadow: 0 8px 20px rgba(38, 161, 123, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .support-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.1"><path d="M12 1.75L5.75 12.25H9.5V22.25H14.5V12.25H18.25L12 1.75Z"/></svg>');
+        background-repeat: repeat;
+        background-size: 30px;
+      }
+
+      .support-text {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .support-text h3 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .support-text h3 i {
+        color: var(--gold);
+      }
+
+      .support-text p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      .crypto-btn {
+        background: linear-gradient(to right, var(--gold), #ffd700);
+        color: #000;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        white-space: nowrap;
+      }
+
+      .crypto-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        background: linear-gradient(to right, #ffd700, var(--gold));
+      }
+
+      .main-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        flex: 1;
+        min-width: 300px;
+        background-color: var(--snow-white);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-red),
+          var(--primary-green),
+          var(--gold)
+        );
+      }
+
+      .card-title {
+        font-family: "Mountains of Christmas", cursive;
+        font-size: 2.2rem;
+        color: var(--dark-green);
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--dark-green);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--primary-green);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(42, 122, 58, 0.2);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(
+          to right,
+          var(--primary-red),
+          var(--primary-green)
+        );
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 15px rgba(194, 58, 58, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(194, 58, 58, 0.4);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-share {
+        background: linear-gradient(to right, var(--primary-green), #1a8c3a);
+        margin-top: 15px;
+      }
+
+      .message-preview {
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #f0f8f0;
+        border: 2px dashed var(--primary-green);
+        margin-top: 20px;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .message-preview h3 {
+        font-family: "Mountains of Christmas", cursive;
+        color: var(--primary-red);
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .message-preview p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      .message-preview .name {
+        font-weight: 700;
+        color: var(--dark-green);
+        font-size: 1.4rem;
+      }
+
+      .share-section {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .share-title {
+        font-size: 1.3rem;
+        color: var(--dark-green);
+        margin-bottom: 15px;
+      }
+
+      .share-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .share-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 25px;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .share-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .share-btn.whatsapp {
+        background-color: #25d366;
+      }
+
+      .share-btn.facebook {
+        background-color: #3b5998;
+      }
+
+      .share-btn.twitter {
+        background-color: #1da1f2;
+      }
+
+      .share-btn.email {
+        background-color: #ea4335;
+      }
+
+      .link-container {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      #shareableLink {
+        flex: 1;
+        padding: 15px;
+        border: 2px solid var(--primary-green);
+        border-radius: 10px 0 0 10px;
+        font-size: 0.95rem;
+        background-color: #f8f9fa;
+      }
+
+      .copy-btn {
+        background-color: var(--gold);
+        color: #333;
+        border: none;
+        padding: 0 25px;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .copy-btn:hover {
+        background-color: #c19b2e;
+      }
+
+      /* Modal pour les dons crypto */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1001;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 550px;
+        padding: 30px;
+        position: relative;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        animation: modalFadeIn 0.3s ease;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .modal-header h3 {
+        font-size: 1.8rem;
+        color: var(--crypto-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #777;
+        transition: color 0.3s ease;
+      }
+
+      .close-modal:hover {
+        color: var(--primary-red);
+      }
+
+      .crypto-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 15px;
+      }
+
+      .crypto-tab {
+        padding: 10px 20px;
+        background: none;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .crypto-tab.active {
+        background-color: var(--usdt-green);
+        color: white;
+      }
+
+      .crypto-tab.btc {
+        border: 2px solid var(--btc-orange);
+        color: var(--btc-orange);
+      }
+
+      .crypto-tab.usdt {
+        border: 2px solid var(--usdt-green);
+        color: var(--usdt-green);
+      }
+
+      .crypto-tab.active.btc {
+        background-color: var(--btc-orange);
+        color: white;
+      }
+
+      .crypto-tab.active.usdt {
+        background-color: var(--usdt-green);
+        color: white;
+      }
+
+      .crypto-tab-content {
+        display: none;
+      }
+
+      .crypto-tab-content.active {
+        display: block;
+      }
+
+      .crypto-address {
+        background-color: #f5f9ff;
+        border: 2px dashed var(--crypto-blue);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .crypto-address p {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--crypto-dark);
+      }
+
+      .address-container {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .crypto-address-input {
+        flex: 1;
+        padding: 15px;
+        border: 2px solid var(--crypto-blue);
+        border-radius: 10px 0 0 10px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        background-color: white;
+      }
+
+      .crypto-copy-btn {
+        background-color: var(--crypto-blue);
+        color: white;
+        border: none;
+        padding: 0 20px;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .crypto-copy-btn:hover {
+        background-color: var(--crypto-dark);
+      }
+
+      .network-info {
+        background-color: #f0f8f5;
+        border-left: 4px solid var(--usdt-green);
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .network-info p {
+        font-size: 0.9rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .network-info p i {
+        color: var(--usdt-green);
+      }
+
+      .crypto-wallets {
+        margin-top: 25px;
+      }
+
+      .crypto-wallets h4 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: var(--dark-green);
+      }
+
+      .wallet-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .wallet-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .wallet-item i {
+        color: var(--crypto-blue);
+        font-size: 1.2rem;
+      }
+
+      .snowflakes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .snowflake {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: var(--snow-white);
+        font-size: 0.9rem;
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .instructions {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px var(--shadow);
+      }
+
+      .instructions h3 {
+        color: var(--primary-red);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .instructions ol {
+        padding-left: 20px;
+        line-height: 1.8;
+      }
+
+      .instructions li {
+        margin-bottom: 10px;
+      }
+
+      .notification {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background-color: var(--primary-green);
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        z-index: 1000;
+      }
+
+      .notification.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+        }
+
+        .logo {
+          font-size: 2.5rem;
+        }
+
+        .logo::before,
+        .logo::after {
+          display: none;
+        }
+
+        .card-title {
+          font-size: 1.8rem;
+        }
+
+        .support-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .crypto-btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .crypto-tabs {
+          flex-direction: column;
+        }
+
+        .address-container {
+          flex-direction: column;
+        }
+
+        .crypto-address-input {
+          border-radius: 10px 10px 0 0;
+        }
+
+        .crypto-copy-btn {
+          border-radius: 0 0 10px 10px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Flocons de neige animés -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <!-- Modal pour les dons crypto -->
+    <div class="modal" id="cryptoModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-donate"></i> Soutenir le projet</h3>
+          <button class="close-modal" id="closeModal">&times;</button>
+        </div>
+
+        <p>
+          Merci de vouloir soutenir ce projet ! Choisissez votre cryptomonnaie
+          préférée :
+        </p>
+
+        <div class="crypto-tabs">
+          <button class="crypto-tab usdt active" data-tab="usdt">
+            <i class="fas fa-coins"></i> USDT (TRC20)
+          </button>
+          <button class="crypto-tab btc" data-tab="btc">
+            <i class="fab fa-bitcoin"></i> Bitcoin
+          </button>
+        </div>
+
+        <!-- Contenu USDT TRC20 -->
+        <div class="crypto-tab-content active" id="usdt-tab">
+          <div class="crypto-address">
+            <p>Adresse USDT (Réseau TRC20) :</p>
+            <div class="address-container">
+              <input
+                type="text"
+                class="crypto-address-input"
+                id="usdtAddress"
+                value="TG4aE3tANUtE7GR5vMRRJdUF3k5rRtjfJ3"
+                readonly
+              />
+              <button class="crypto-copy-btn" data-address="usdtAddress">
+                Copier
+              </button>
+            </div>
+            <div class="network-info">
+              <p>
+                <i class="fas fa-network-wired"></i>
+                <strong>Réseau :</strong> TRC20 (Tron)
+              </p>
+              <p>
+                <i class="fas fa-exclamation-circle"></i>
+                <strong>Important :</strong> N'envoyez que des USDT sur le
+                réseau TRC20 à cette adresse
+              </p>
+            </div>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 10px">
+              <i class="fas fa-info-circle"></i> Vous pouvez également scanner
+              le QR code ci-dessous
+            </p>
+          </div>
+
+          <div style="text-align: center; margin: 20px 0">
+            <div
+              id="usdt-qrcode"
+              style="
+                display: inline-block;
+                padding: 15px;
+                background: white;
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </div>
+
+        <!-- Contenu Bitcoin -->
+        <div class="crypto-tab-content" id="btc-tab">
+          <div class="crypto-address">
+            <p>Adresse Bitcoin (BTC) :</p>
+            <div class="address-container">
+              <input
+                type="text"
+                class="crypto-address-input"
+                id="btcAddress"
+                value="1GQb8U1TSwn32kj9zECDw21tMY7dvMjLj4"
+                readonly
+              />
+              <button class="crypto-copy-btn" data-address="btcAddress">
+                Copier
+              </button>
+            </div>
+            <div class="network-info">
+              <p>
+                <i class="fas fa-network-wired"></i>
+                <strong>Réseau :</strong> Bitcoin (BTC)
+              </p>
+              <p>
+                <i class="fas fa-exclamation-circle"></i>
+                <strong>Important :</strong> N'envoyez que des BTC à cette
+                adresse
+              </p>
+            </div>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 10px">
+              <i class="fas fa-info-circle"></i> Vous pouvez également scanner
+              le QR code ci-dessous
+            </p>
+          </div>
+
+          <div style="text-align: center; margin: 20px 0">
+            <div
+              id="btc-qrcode"
+              style="
+                display: inline-block;
+                padding: 15px;
+                background: white;
+                border-radius: 10px;
+              "
+            ></div>
+          </div>
+        </div>
+
+        <div class="crypto-wallets">
+          <h4>Portefeuilles recommandés :</h4>
+          <div class="wallet-list">
+            <div class="wallet-item">
+              <i class="fas fa-wallet"></i>
+              <span>TronLink (USDT)</span>
+            </div>
+            <div class="wallet-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Trust Wallet</span>
+            </div>
+            <div class="wallet-item">
+              <i class="fab fa-bitcoin"></i>
+              <span>Exodus</span>
+            </div>
+            <div class="wallet-item">
+              <i class="fas fa-exchange-alt"></i>
+              <span>Binance</span>
+            </div>
+          </div>
+        </div>
+
+        <p
+          style="
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+          "
+        >
+          <i class="fas fa-heart" style="color: var(--primary-red)"></i> Merci
+          pour votre générosité et soutien ! Chaque don aide à maintenir et
+          améliorer ce projet.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <header>
+        <h1 class="logo">Joyeux Noël</h1>
+        <p class="tagline">
+          Créez et partagez vos souhaits de Noël personnalisés avec vos proches
+        </p>
+      </header>
+
+      <!-- Bannière de soutien -->
+      <div class="support-banner">
+        <div class="support-text">
+          <h3><i class="fas fa-gift"></i> Soutenez ce projet !</h3>
+          <p>
+            Ce site est gratuit et sans publicité. Si vous l'appréciez,
+            envisagez de faire un don crypto (USDT ou BTC) pour soutenir son
+            développement.
+          </p>
+        </div>
+        <button class="crypto-btn" id="donateBtn">
+          <i class="fas fa-donate"></i> Faire un don Crypto
+        </button>
+      </div>
+
+      <div class="main-content">
+        <div class="card">
+          <h2 class="card-title">Créez votre souhait</h2>
+          <form id="wishForm">
+            <div class="form-group">
+              <label for="userName">Votre nom :</label>
+              <input
+                type="text"
+                id="userName"
+                placeholder="Ex: Marie, Pierre, la famille Martin..."
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="wishMessage">Votre message de Noël :</label>
+              <textarea
+                id="wishMessage"
+                placeholder="Ex: Je vous souhaite un Joyeux Noël rempli de joie, d'amour et de paix..."
+              >
+Je vous souhaite un Joyeux Noël rempli de joie, de bonheur et de moments chaleureux en famille. Que la magie de Noël illumine votre foyer ! 🎄✨</textarea
+              >
+            </div>
+
+            <button type="submit" class="btn" id="generateBtn">
+              <i class="fas fa-tree"></i> Générer mon souhait de Noël
+            </button>
+          </form>
+
+          <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> Comment ça marche ?</h3>
+            <ol>
+              <li>
+                Saisissez votre nom et personnalisez votre message de Noël
+              </li>
+              <li>Cliquez sur "Générer mon souhait de Noël"</li>
+              <li>Partagez le lien généré avec vos proches</li>
+              <li>
+                Ils pourront voir votre message personnalisé en cliquant sur le
+                lien
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Aperçu & Partage</h2>
+
+          <div class="message-preview" id="messagePreview">
+            <h3>Joyeux Noël !</h3>
+            <p>
+              Votre message personnalisé apparaîtra ici après que vous ayez
+              saisi votre nom et cliqué sur "Générer".
+            </p>
+          </div>
+
+          <div class="share-section" id="shareSection" style="display: none">
+            <h3 class="share-title">Partagez votre souhait de Noël</h3>
+
+            <div class="link-container">
+              <input type="text" id="shareableLink" readonly />
+              <button class="copy-btn" id="copyBtn">Copier</button>
+            </div>
+
+            <p style="margin-top: 15px; color: #666; font-size: 0.9rem">
+              Copiez ce lien et partagez-le avec vos proches pour qu'ils voient
+              votre message !
+            </p>
+
+            <div class="share-buttons">
+              <a href="#" class="share-btn whatsapp" id="whatsappShare">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="#" class="share-btn facebook" id="facebookShare">
+                <i class="fab fa-facebook-f"></i> Facebook
+              </a>
+              <a href="#" class="share-btn twitter" id="twitterShare">
+                <i class="fab fa-twitter"></i> Twitter
+              </a>
+              <a href="#" class="share-btn email" id="emailShare">
+                <i class="fas fa-envelope"></i> Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          🎄 Joyeux Noël à tous ! 🎅 | Site créé avec la magie de Noël |
+          <a
+            href="#"
+            id="footerDonate"
+            style="color: var(--gold); text-decoration: none"
+            >Soutenir le projet</a
+          >
+          | © 2025
+        </p>
+      </footer>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+      Lien copié dans le presse-papier !
+    </div>
+
+    <!-- Bibliothèque QRCode -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+      // Générer des flocons de neige
+      function createSnowflakes() {
+        const snowflakesContainer = document.getElementById("snowflakes");
+        const snowflakeCount = 50;
+
+        for (let i = 0; i < snowflakeCount; i++) {
+          const snowflake = document.createElement("div");
+          snowflake.classList.add("snowflake");
+
+          // Taille aléatoire entre 5px et 15px
+          const size = Math.random() * 10 + 5;
+          snowflake.style.width = `${size}px`;
+          snowflake.style.height = `${size}px`;
+
+          // Position aléatoire
+          snowflake.style.left = `${Math.random() * 100}vw`;
+
+          // Opacité aléatoire
+          snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+
+          // Animation avec durée aléatoire
+          const duration = Math.random() * 10 + 10;
+          snowflake.style.animationDuration = `${duration}s`;
+
+          // Délai d'animation aléatoire
+          snowflake.style.animationDelay = `${Math.random() * 5}s`;
+
+          snowflakesContainer.appendChild(snowflake);
+        }
+      }
+
+      // Afficher un message de notification
+      function showNotification(message) {
+        const notification = document.getElementById("notification");
+        notification.textContent = message;
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 3000);
+      }
+
+      // Générer un identifiant unique pour le message
+      function generateUniqueId() {
+        return (
+          "wish_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9)
+        );
+      }
+
+      // Générer le lien partageable
+      function generateShareableLink(userName, wishMessage) {
+        // Créer un identifiant unique pour ce message
+        const wishId = generateUniqueId();
+
+        // Stocker le message dans le localStorage
+        const wishData = {
+          name: userName,
+          message: wishMessage,
+          timestamp: Date.now(),
+        };
+
+        localStorage.setItem(wishId, JSON.stringify(wishData));
+
+        // Générer l'URL de partage
+        const baseUrl = window.location.origin + window.location.pathname;
+        return `${baseUrl}?wish=${wishId}`;
+      }
+
+      // Afficher le message à partir de l'URL
+      function displayWishFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const wishId = urlParams.get("wish");
+
+        if (wishId) {
+          const wishData = JSON.parse(localStorage.getItem(wishId));
+
+          if (wishData) {
+            // Afficher le message
+            document.getElementById("messagePreview").innerHTML = `
+                        <h3>Joyeux Noël !</h3>
+                        <p>${wishData.message}</p>
+                        <p style="margin-top: 20px; font-style: italic;">— <span class="name">${
+                          wishData.name
+                        }</span></p>
+                        <p style="margin-top: 30px; font-size: 1rem; color: #777;">
+                            Message créé le ${new Date(
+                              wishData.timestamp
+                            ).toLocaleDateString("fr-FR")}
+                        </p>
+                    `;
+
+            // Masquer le formulaire et afficher uniquement le message
+            document.getElementById("wishForm").style.display = "none";
+            document.querySelector(".instructions").style.display = "none";
+            document.querySelector(".card-title").textContent =
+              "Souhait de Noël";
+
+            // Modifier le titre de la page
+            document.querySelector(
+              ".logo"
+            ).textContent = `Joyeux Noël de la part de ${wishData.name}`;
+            document.querySelector(".tagline").textContent =
+              "Un message spécial de Noël vous a été envoyé !";
+          }
+        }
+      }
+
+      // Générer les QR codes
+      function generateQRCodes() {
+        // Adresse USDT TRC20
+        const usdtAddress = "TG4aE3tANUtE7GR5vMRRJdUF3k5rRtjfJ3";
+
+        // Nettoyer d'abord les conteneurs QR code
+        document.getElementById("usdt-qrcode").innerHTML = "";
+
+        // Créer le QR code USDT
+        new QRCode(document.getElementById("usdt-qrcode"), {
+          text: usdtAddress,
+          width: 150,
+          height: 150,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+
+        // Adresse Bitcoin (optionnelle)
+        const btcAddress = "1GQb8U1TSwn32kj9zECDw21tMY7dvMjLj4";
+        document.getElementById("btc-qrcode").innerHTML = "";
+
+        // Créer le QR code BTC
+        new QRCode(document.getElementById("btc-qrcode"), {
+          text: btcAddress,
+          width: 150,
+          height: 150,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+      }
+
+      // Gestion du modal crypto avec onglets
+      function setupCryptoModal() {
+        const modal = document.getElementById("cryptoModal");
+        const donateBtn = document.getElementById("donateBtn");
+        const footerDonate = document.getElementById("footerDonate");
+        const closeModal = document.getElementById("closeModal");
+        const cryptoTabs = document.querySelectorAll(".crypto-tab");
+        const cryptoCopyBtns = document.querySelectorAll(".crypto-copy-btn");
+
+        // Ouvrir le modal
+        donateBtn.addEventListener("click", () => {
+          modal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        });
+
+        footerDonate.addEventListener("click", (e) => {
+          e.preventDefault();
+          modal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        });
+
+        // Fermer le modal
+        closeModal.addEventListener("click", () => {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+
+        // Fermer en cliquant en dehors du modal
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Gestion des onglets crypto
+        cryptoTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Retirer la classe active de tous les onglets
+            cryptoTabs.forEach((t) => t.classList.remove("active"));
+
+            // Ajouter la classe active à l'onglet cliqué
+            tab.classList.add("active");
+
+            // Masquer tous les contenus
+            document
+              .querySelectorAll(".crypto-tab-content")
+              .forEach((content) => {
+                content.classList.remove("active");
+              });
+
+            // Afficher le contenu correspondant
+            const tabId = tab.getAttribute("data-tab");
+            document.getElementById(`${tabId}-tab`).classList.add("active");
+          });
+        });
+
+        // Copier les adresses crypto
+        cryptoCopyBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const addressId = btn.getAttribute("data-address");
+            const cryptoAddress = document.getElementById(addressId);
+            cryptoAddress.select();
+            cryptoAddress.setSelectionRange(0, 99999);
+
+            // Obtenir le nom de la crypto à partir de l'ID
+            let cryptoName = "crypto";
+            if (addressId.includes("usdt")) cryptoName = "USDT";
+            if (addressId.includes("btc")) cryptoName = "Bitcoin";
+
+            try {
+              navigator.clipboard.writeText(cryptoAddress.value);
+              showNotification(`Adresse ${cryptoName} copiée !`);
+            } catch (err) {
+              document.execCommand("copy");
+              showNotification(`Adresse ${cryptoName} copiée !`);
+            }
+          });
+        });
+      }
+
+      // Initialiser l'application
+      document.addEventListener("DOMContentLoaded", function () {
+        // Créer les flocons de neige
+        createSnowflakes();
+
+        // Vérifier si nous devons afficher un message à partir de l'URL
+        displayWishFromUrl();
+
+        // Configurer le modal crypto
+        setupCryptoModal();
+
+        // Générer les QR codes
+        generateQRCodes();
+
+        // Gérer la soumission du formulaire
+        const wishForm = document.getElementById("wishForm");
+        const messagePreview = document.getElementById("messagePreview");
+        const shareSection = document.getElementById("shareSection");
+
+        wishForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const userName = document.getElementById("userName").value.trim();
+          const wishMessage = document
+            .getElementById("wishMessage")
+            .value.trim();
+
+          if (!userName) {
+            alert("Veuillez saisir votre nom");
+            return;
+          }
+
+          if (!wishMessage) {
+            alert("Veuillez saisir un message de Noël");
+            return;
+          }
+
+          // Générer le lien partageable
+          const shareableLink = generateShareableLink(userName, wishMessage);
+
+          // Mettre à jour l'aperçu du message
+          messagePreview.innerHTML = `
+                    <h3>Joyeux Noël !</h3>
+                    <p>${wishMessage}</p>
+                    <p style="margin-top: 20px; font-style: italic;">— <span class="name">${userName}</span></p>
+                `;
+
+          // Mettre à jour le lien partageable
+          document.getElementById("shareableLink").value = shareableLink;
+
+          // Afficher la section de partage
+          shareSection.style.display = "block";
+
+          // Faire défiler jusqu'à la section de partage
+          shareSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          // Mettre à jour les liens de partage
+          const encodedMessage = encodeURIComponent(
+            `Joyeux Noël de la part de ${userName} ! Découvrez mon message spécial : ${shareableLink}`
+          );
+          const encodedUrl = encodeURIComponent(shareableLink);
+
+          // WhatsApp
+          document.getElementById(
+            "whatsappShare"
+          ).href = `https://wa.me/?text=${encodedMessage}`;
+
+          // Facebook
+          document.getElementById(
+            "facebookShare"
+          ).href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+
+          // Twitter
+          document.getElementById(
+            "twitterShare"
+          ).href = `https://twitter.com/intent/tweet?text=${encodedMessage}`;
+
+          // Email
+          document.getElementById(
+            "emailShare"
+          ).href = `mailto:?subject=Joyeux Noël de la part de ${userName}&body=${encodedMessage}`;
+
+          // Afficher une notification
+          showNotification("Votre souhait de Noël a été généré avec succès !");
+        });
+
+        // Gérer la copie du lien
+        const copyBtn = document.getElementById("copyBtn");
+        copyBtn.addEventListener("click", function () {
+          const shareableLink = document.getElementById("shareableLink");
+          shareableLink.select();
+          shareableLink.setSelectionRange(0, 99999); // Pour mobile
+
+          try {
+            navigator.clipboard.writeText(shareableLink.value);
+            showNotification("Lien copié dans le presse-papier !");
+          } catch (err) {
+            // Fallback pour les anciens navigateurs
+            document.execCommand("copy");
+            showNotification("Lien copié dans le presse-papier !");
+          }
+        });
+
+        // Si l'utilisateur a déjà créé un souhait, le pré-remplir
+        const lastWishId = localStorage.getItem("lastWishId");
+        if (lastWishId) {
+          const lastWish = JSON.parse(localStorage.getItem(lastWishId));
+          if (lastWish) {
+            document.getElementById("userName").value = lastWish.name;
+            document.getElementById("wishMessage").value = lastWish.message;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
